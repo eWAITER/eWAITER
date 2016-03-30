@@ -9,12 +9,9 @@
         <link rel="stylesheet" href="../css/dashboard.css">
         <link rel="stylesheet" href="../css/cmxform.css">
         <link href="../css/signin.css" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.validate.min.js"></script>
-        <script src="js/messages_es.js"></script>
+        <script type="text/javascript" src="./../js/javascripto.js"></script>
     </head>
-    <body>
+    <body onload="myFunction()">
         <p class="Pcabecera">Hola usuario %variable% | <a href="../../index.html">Desconectar</a></p>
         
         <fieldset class="fielseWa">

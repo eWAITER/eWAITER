@@ -26,13 +26,13 @@ public class loginJV extends HttpServlet {
     
     @Override
     public void init(ServletConfig cfg) throws ServletException {//esto es la conexion
-        //String sURL="jdbc:mysql://db4free.net";
-        String sURL="jdbc:mysql://localhost/a7416073_ewaiter";
+        String sURL="jdbc:mysql://db4free.net";
+        //String sURL="jdbc:mysql://localhost/a7416073_ewaiter";
         super.init(cfg);
-        String userName = "root";
-        String password = "";
-        //String userName = "ewaiter";
-        //String password = "ewaiterroot100";
+        //String userName = "root";
+        //String password = "";
+        String userName = "ewaiter";
+        String password = "ewaiterroot100";
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(sURL, userName, password);
@@ -69,7 +69,7 @@ public class loginJV extends HttpServlet {
         
         try {
             set = con.createStatement();
-            rs = set.executeQuery("SELECT * FROM Usuario");
+            rs = set.executeQuery("SELECT * FROM ewaiter.Usuario");
             while (rs.next()) {
                 cad = rs.getString("Nombre");
                 cad = cad.trim();
