@@ -23,8 +23,20 @@
 
     </head>
     <body onload="myFunction()">
-        <p class="Pcabecera">Hola usuario %variable% | <a href="../index.html">Desconectar</a></p>
      
+        <%  
+     
+            if(session.getAttribute("nombreCliente") == null){
+            response.sendRedirect("../index.html");
+            //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
+            }else{
+                String nombre = session.getAttribute("nombreCliente").toString();
+                out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
+            }
+                 
+            
+        %>
+        
         
         <fieldset class="fielseWa">
             <legend class="legeneWa">Panel de administración</legend>
