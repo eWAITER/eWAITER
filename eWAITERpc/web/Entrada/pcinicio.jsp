@@ -27,7 +27,7 @@
         <%  
      
             if(session.getAttribute("nombreCliente") == null){
-            response.sendRedirect("../index.html");
+            response.sendRedirect("../index.html#NoTeHasLogeado");
             //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
             }else{
                 String nombre = session.getAttribute("nombreCliente").toString();

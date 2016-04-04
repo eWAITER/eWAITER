@@ -51,9 +51,46 @@ body {
     text-align: right;
     margin-right: 3%;
 }
-/* css cajas con botonera de scroll*/
+/* css cajas con botonera de scroll // aqui tenermos el tema de menus cartas etc*/
+.cajaScroll{
+    border : solid 2px #ff0000;
+    background : #eee;
+    padding : 4px;
+    width : 100%;
+    height : 520px;
+    overflow : auto;
+}
+/*las tablas que van dentro*/
+.tablaExistente{
+    width: 100%;
+    height: 20%;
+    border:2px solid;
+    border-color:#000;
+    border-radius: 15px;
+    border-collapse:initial;
+    margin-bottom: 2%;
+   }
+.tdexistente{
+    border-right: 5px;
+    border-style: solid;
+    border-color: #000;
+}
 
-
+.tablaNueva{  
+    width: 100%;
+    height: 20%;
+    border:2px solid;
+    border-color:#000;
+    border-radius: 25px;
+    border-collapse:initial;
+    margin-bottom: 2%;
+    text-align: center;
+    border-width:2px;	
+    border-style:dashed;
+}
+.masTablaNueva{
+    font-size: 68px;
+}
 /*css de botones */
 
 /*administración*/

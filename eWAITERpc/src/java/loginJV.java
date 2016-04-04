@@ -93,7 +93,7 @@ public class loginJV extends HttpServlet {
             if (existe) {
                response.sendRedirect(response.encodeRedirectURL("./Entrada/pcinicio.jsp"));
             }else{
-                response.sendRedirect(response.encodeRedirectURL("./index.html%Err"));
+                response.sendRedirect(response.encodeRedirectURL("./index.html#Err"));
             }
             rs.close();
             set.close();
