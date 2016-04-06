@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="../css/dashboard.css">
         <link rel="stylesheet" href="../css/cmxform.css">
         <link href="../css/signin.css" rel="stylesheet">
+        <link href="../css/carta/carta.css" rel="stylesheet">
         <script type="text/javascript" src="./../js/javascripto.js"></script>
+        <script type="text/javascript" src="../js/controlTamanoResultados.js"></script>
     </head>
-    <body onload="myFunction()">
+    <body onload="controlTamano(this); myFunction()">
         
         
          <%  
@@ -31,6 +33,13 @@
         
         <fieldset class="fielseWa">
             <legend class="legeneWa">Carta</legend>
+            <!--ZONA CONSULA-->
+            <div class="zonaConsultaYCreacion">
+                asdsadas
+            </div>
+            
+            
+            <!--ZONA VISUALIZACIÓN-->
             <div class="cajaScroll">
                 <!-- Aqui se pregunta al servidor cuantas cartas tenermos y se muestran, en el ultimo puesto     border: 2px red solid;-->
                 <!-- primero creo solo para ver-->

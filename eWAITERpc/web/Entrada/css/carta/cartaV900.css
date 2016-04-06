@@ -1,0 +1,7 @@
+.cajaScroll{
+    background : #F5F5F5;
+    padding : 4px;
+    width : 100%;
+    height: 465px;/*no puede ser responsive, control por js*/
+    overflow : auto;
+}
