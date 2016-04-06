@@ -12,31 +12,60 @@
         <script type="text/javascript" src="./../js/javascripto.js"></script>
     </head>
     <body onload="myFunction()">
-        <p class="Pcabecera">Hola usuario %variable% | <a href="../../index.html">Desconectar</a></p>
+        
+        
+         <%  
+     
+            if(session.getAttribute("nombreCliente") == null){
+            response.sendRedirect("../../index.html#NoTeHasLogeado");
+            //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
+            }else{
+                String nombre = session.getAttribute("nombreCliente").toString();
+                out.println(""
+                        + "<span class='pCabeceraBotonAtras'>boton</span>"
+                        + "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../../index.html'> Desconectar </a></span>");
+            }
+                 
+            
+        %>
         
         <fieldset class="fielseWa">
-            <legend class="legeneWa">Cartas</legend>
-            
+            <legend class="legeneWa">Carta</legend>
             <div class="cajaScroll">
-                <!-- Aqui se pregunta al servidor cuantas cartas tenermos y se muestran, en el ultimo puesto     border: 2px red solid;
-    border-radius: 10px;
-	  class="tdexistente" -->
+                <!-- Aqui se pregunta al servidor cuantas cartas tenermos y se muestran, en el ultimo puesto     border: 2px red solid;-->
                 <!-- primero creo solo para ver-->
                 <table class="tablaExistente">
                     <tr>
-                        <td rowspan="2" width="85%">MENU 1 </td>
-                        <td rowspan="2" width="10%">19,99€</td>
-                        <td width="5%" >b</td>
+                        <td rowspan="2" class="cuerpoCarta">
+                            
+                            <table width="100%">
+                                <tr>
+                                    <td class="imgCarta">img</td>
+                                    <td class="nombreCarta">nombre</td>
+                                    <td class="precioCarta">19,99€</td>
+                                </tr>
+                            </table>                           
+                            
+                        </td>
+                        <td class="editarCarta">b</td>
                     </tr>
                     <tr>
-                        <td width="5%">2</td>
+                        <td class="eliminarCarta">2</td>
                     </tr>
                 </table>
                 
                 
+                
+                
+                
+                
+                
+                
+                
+                
                  <table class="tablaNueva">
                     <tr>
-                        <td width="100%" class="masTablaNueva">+</td> 
+                        <td width="100%">+</td> 
                     </tr>
                 </table>
                 

@@ -31,7 +31,9 @@
             //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
             }else{
                 String nombre = session.getAttribute("nombreCliente").toString();
-                out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
+                out.println(""
+                        + "<span class='pCabeceraBotonAtras'>boton</span>"
+                        + "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></span>");
             }
                  
             
