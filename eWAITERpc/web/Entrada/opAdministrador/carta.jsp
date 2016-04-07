@@ -24,7 +24,9 @@
             }else{
                 String nombre = session.getAttribute("nombreCliente").toString();
                 out.println(""
-                        + "<span class='pCabeceraBotonAtras'>boton</span>"
+                        + "<span class='pCabeceraBotonAtras'><img class='botonAtras'"
+                        + "src='http://ewaiter.netau.net/fotos/botones/atras.png'"
+                        + "href='../principio.jsp' /></span>"
                         + "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../../index.html'> Desconectar </a></span>");
             }
                  
@@ -35,10 +37,50 @@
             <legend class="legeneWa">Carta</legend>
             <!--ZONA CONSULA-->
             <div class="zonaConsultaYCreacion">
-                asdsadas
+                
+                <table width="100%" height="100%">
+                    <tr>
+                        <td class="filtros">
+                            <div class="spanGeneralFiltro"><!--general-->
+                                <span>Filtrar por: </span>
+                                <span class="seleccionPrimerLvl"><!--desplegable de primer nivel-->
+                                    <select>
+                                        <option>Cat principal</option>
+                                        <option>s</option>
+                                        <option>d</option>
+                                        <option>f</option>
+                                        <option>g</option>
+                                    </select>
+                                </span>
+                                <span>y </span>
+                                <span class="seleccionSegundoLvl">
+                                    <select>
+                                        <option>Subcategorias</option>
+                                        <option>s</option>
+                                        <option>d</option>
+                                        <option>f</option>
+                                        <option>g</option>
+                                    </select>
+                                </span>
+                                <span class="SpabotonAplicar"><button>Aplicar</button></span>
+                            </div>
+                        </td>
+                        <td class="buscar">
+                            <input class="buscador"  placeholder="Buscar" />
+                             <input type="image" src="http://ewaiter.netau.net/fotos/botones/buscar.png" class="clickBuscar">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="crear">
+                            <button class="AnadirProd">Añadir nuevo producto</button>
+                        </td>
+                        <td class="gestionSubcat">
+                            <button class="AnadirProd">Gestionar subcategorías</button>
+                        </td>
+                    </tr>                    
+                </table>
+                
             </div>
-            
-            
             <!--ZONA VISUALIZACIÓN-->
             <div class="cajaScroll">
                 <!-- Aqui se pregunta al servidor cuantas cartas tenermos y se muestran, en el ultimo puesto     border: 2px red solid;-->
@@ -62,6 +104,7 @@
                         <td class="eliminarCarta">2</td>
                     </tr>
                 </table>
+                
                 
                 
                 
