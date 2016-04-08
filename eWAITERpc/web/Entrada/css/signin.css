@@ -18,6 +18,44 @@ body {
 
 
 /* eWaiter css */
+
+/*nav*/
+.zonaMenu{}
+.menu{
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+    height: 40px;
+    font-size: 18px;    
+}
+.menuHomeOFF{
+    width: 5%;
+    background-color: #F5F5F5;
+}
+.menuHomeOFF:hover{
+    background-color: #279CFE;
+}
+.menuHomeON{
+    width: 19%;
+}
+.menuOFF{
+    width: 19%;
+    background-color: #404040;
+    color:#F5F5F5;
+}
+.menuOFF:hover{
+    background-color: #279CFE;
+}
+.menuON{
+    width: 19%;
+    color: white;
+    background-color: #279CFE;
+    
+}
+
+
+
 /*css base*/
 .legeneWa{
     display: block;
