@@ -9,13 +9,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>eWAITER - Login</title>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/dashboard.css">
-        <link rel="stylesheet" href="../css/cmxform.css">
-        <link href="../css/signin.css" rel="stylesheet">
-        <link href="../css/carta/carta.css" rel="stylesheet">
-        <script type="text/javascript" src="./../js/javascripto.js"></script>
-        <script type="text/javascript" src="../js/controlTamanoResultados.js"></script>
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../css/dashboard.css">
+        <link rel="stylesheet" href="../../css/cmxform.css">
+        <link href="../../css/signin.css" rel="stylesheet">
+        <link href="../../css/carta/carta.css" rel="stylesheet">
+        <script type="text/javascript" src="./../../js/javascripto.js"></script>
+        <script type="text/javascript" src="../../js/controlTamanoResultados.js"></script>
+        <script type="text/javascript" src="../../js/Combos.js"></script>
+        <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
     </head>
     <body onload="controlTamano(this); myFunction()">
         
@@ -28,7 +30,7 @@
             }else{
                 String nombre = session.getAttribute("nombreCliente").toString();
                 out.println(
-                "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../../index.html'> Desconectar </a></span>");
+                "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../../../index.html'> Desconectar </a></span>");
             }
                  
             
@@ -63,14 +65,14 @@
             <legend class="legeneWa">Carta</legend>
             <!--ZONA CONSULA-->
             <div class="zonaConsultaYCreacion">
-                
-                <table width="100%" height="100%">
+                <form id="data" method="post">  <!--control para el combobox-->
+                <table width="100%">
                     <tr>
                         <td class="filtros">
                             <div class="spanGeneralFiltro"><!--general-->
                                 <span>Filtrar por: </span>
                                 <span class="seleccionPrimerLvl"><!--desplegable de primer nivel-->
-                                    <select>
+                                    <select name="CatPrin" onchange="comboSubCat()">
                                         <option>Cat principal</option>     
                                 <%
                                 Connection con;
@@ -90,9 +92,9 @@
                                         String Nombre = rs.getString("Nombre");
                                         out.println("<option>"+ Nombre +"</option>");
                                     }
-                                    rs.close();
-                                    set.close();
                                     con.close();
+                                    set.close();
+                                    rs.close();
                                 } catch (Exception e) {
                                     out.println("<option>No se encuentran resultados</option>");
                                 }
@@ -100,36 +102,9 @@
                                     </select>
                                 </span>
                                 <span>y </span>
-                                <span class="seleccionSegundoLvl">
+                                <span class="seleccionSegundoLvl" id="subcat">
                                     <select>
-                                        <option>Subcategorias</option>       
-                                <%          
-                                Connection con2;
-                                Statement set2;
-                                ResultSet rs2;
-                                String sURL2 = "jdbc:mysql://db4free.net";
-                                String userName2 = "ewaiter";
-                                String password2 = "ewaiterroot100";
-                                try {
-                                    String seleccion ="";
-                                    Class.forName("com.mysql.jdbc.Driver").newInstance();
-                                    con2 = DriverManager.getConnection(sURL2, userName2, password2);
-                                    set2 = con2.createStatement();
-                                    rs2= set2.executeQuery(""
-                                            + "SELECT Nombre FROM ewaiter.Subcategoria WHERE ID_Categoria =(SELECT ID_Categoria FROM ewaiter.Categoria WHERE nombre like '"+ seleccion+"' );"
-                                                            );
-                                    while (rs2.next()) {
-                                        String Nombre2 = rs2.getString("Nombre");
-                                        out.println("<option>"+ Nombre2 +"</option>");
-                                    }
-                                    rs2.close();
-                                    set2.close();
-                                    con2.close();
-                                } catch (Exception e) {
-                                    out.println("<option>No se encuentran resultados</option>");
-                                }
-                            %> 
-                                        
+                                        <option>Subcategorias</option>
                                     </select>
                                 </span>
                                 <span class="SpabotonAplicar"><button>Aplicar</button></span>
@@ -149,6 +124,7 @@
                         </td>
                     </tr>                    
                 </table>
+                </form><!--fin del control del combo-->
                 
             </div>
             <!--ZONA VISUALIZACIÓN-->

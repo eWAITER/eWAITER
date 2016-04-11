@@ -52,7 +52,7 @@
                             
                             <table width="100%"><tr width="100%"><td align="center">
                             
-                            <p><button class="Badmin" onclick="window.location.href='./opAdministrador/carta.jsp'">Carta</button></p>
+                            <p><button class="Badmin" onclick="window.location.href='./opAdministrador/carta/carta.jsp'">Carta</button></p>
                             
                             <p class="PsepBotones"><button onclick="window.location.href='./opAdministrador/menu.jsp'" class="Badmin">Menús</button></p>
                             
