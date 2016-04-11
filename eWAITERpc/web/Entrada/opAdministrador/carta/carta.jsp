@@ -8,7 +8,8 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>eWAITER - Login</title>
+        <title>eWAITER - Carta</title>
+        <link rel="icon" href="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%2045x45.png">
         <link rel="stylesheet" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" href="../../css/dashboard.css">
         <link rel="stylesheet" href="../../css/cmxform.css">

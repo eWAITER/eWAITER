@@ -9,6 +9,7 @@ and open the template in the editor.
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>eWAITER - Login</title>
+        <link rel="icon" href="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%2045x45.png">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/dashboard.css">
         <link rel="stylesheet" href="css/cmxform.css">
@@ -20,12 +21,14 @@ and open the template in the editor.
         <script type="text/javascript" src="./Entrada/js/javascripto.js"></script>
     </head>
     <body onload="myFunction()">
-        <div style="margin-top: 7%;"><!-- div para colocar en posción el login-->
-            <p style="font-size: 550%; text-align: center;">eWAITER</p>  
+        <div> 
+            <div class="logocentrado">
+                <img src="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%20250x250.png">
+            </div>
+         <p style="font-size: 550%; text-align: center;">eWAITER</p> 
             <form action="loginJV" class="form-signin">
                 <fieldset class="fielseWa">
                     <legend class="legeneWa">Login</legend>
-                    
                     <label for="inputEmail" class="sr-only">Usuario</label>
                     <input id="inputEmail" name="nombre" class="form-control" placeholder="Usuario" required="" autofocus="">
                     <label for="inputPassword" class="sr-only">Contraseña</label>

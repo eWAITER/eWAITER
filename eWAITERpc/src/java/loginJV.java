@@ -70,6 +70,7 @@ public class loginJV extends HttpServlet {
         try {
             set = con.createStatement();
             rs = set.executeQuery("SELECT * FROM ewaiter.Usuario");
+            //rs = set.executeQuery("SELECT * FROM Usuario");
             while (rs.next()) {
                 cad = rs.getString("Nombre");
                 cad = cad.trim();
