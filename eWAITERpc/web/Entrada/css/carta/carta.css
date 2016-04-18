@@ -140,6 +140,13 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 }
 .imgCarta{
     width: 10%;
+    text-align: center;
+}
+.imagenEscupidera{
+    height: 85px;
+    width: 85px;
+    border:3px solid #021a40;
+    border-radius: 8px;
 }
 .nombreCarta{
     width: 70%;
@@ -154,8 +161,9 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 .editarCarta{
     border-radius: 0 14px 0 0;
     border-collapse:initial;
-    width: 5%;
+    width: 5%;    
     background-color: #FFC903;
+    text-align: center;
 }
 .editarCarta:hover{
     background-color: #FFD646;
@@ -165,13 +173,15 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 }
 
 .imgEditarCarta{
-    
+    height: 45px;
+    width: 40px;
 }
 .eliminarCarta{
     border-radius: 0 0 14px 0;
     border-collapse:initial;
     width: 5%;
     background-color: #DE514B;
+    text-align: center;
 }
 .eliminarCarta:hover{
     background-color: #E26B65; 
@@ -180,7 +190,8 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     background-color: #B42821;
 }
 .imgEliminarCarta{
-    
+    height: 45px;
+    width: 45px;
 }
 
 /*FIN DE BOTONES CARTAS*/

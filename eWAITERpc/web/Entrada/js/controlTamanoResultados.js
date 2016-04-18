@@ -5,7 +5,7 @@ function controlTamano() {
         var link  = document.createElement('link');
 	link.rel  = 'Stylesheet';
 	link.type = 'text/css';
-	link.href = '../css/carta/cartaV900.css';
+	link.href = '../../css/carta/cartaV900.css';
 	head.appendChild(link);
     }
     if(window.innerHeight <= 1000 && window.innerHeight >= 901){
@@ -13,7 +13,7 @@ function controlTamano() {
         var link  = document.createElement('link');
 	link.rel  = 'Stylesheet';
 	link.type = 'text/css';
-	link.href = '../css/carta/cartaV1000.css';
+	link.href = '../../css/carta/cartaV1000.css';
 	head.appendChild(link);
     }
     if(window.innerHeight >= 1001){
@@ -21,7 +21,7 @@ function controlTamano() {
         var link  = document.createElement('link');
 	link.rel  = 'Stylesheet';
 	link.type = 'text/css';
-	link.href = '../css/carta/cartaV1080.css';
+	link.href = '../../css/carta/cartaV1080.css';
 	head.appendChild(link);
     }
     
