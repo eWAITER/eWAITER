@@ -25,9 +25,9 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <script>
-
-
-</script>
+        <%
+    String parametro =  request.getQueryString();
+     out.println(parametro);
+    %>
     </body>
 </html>

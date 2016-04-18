@@ -20,7 +20,6 @@
         <script type="text/javascript" src="../../js/controlTamanoResultados.js"></script>
         <script type="text/javascript" src="../../js/Combos.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" src="../../js/controlListas.js"></script>
     </head>
     <body onload="controlTamano(this); myFunction()">
 
@@ -155,17 +154,18 @@
                         con = DriverManager.getConnection(sURL, userName, password);
                         set = con.createStatement();
                         rs = set.executeQuery(""
-                                + "SELECT Nombre, Imagen, Precio FROM ewaiter.Producto"
+                                + "SELECT Nombre, Imagen, Precio, ID_Producto FROM ewaiter.Producto"
                         );
                         while (rs.next()) {
                             String Nombre = rs.getString("Nombre");
                             String Imagen = rs.getString("Imagen");
                             String Precio = rs.getString("Precio");
+                            String id = rs.getString("ID_Producto");
                 %>
                 <table class="tablaExistente">
                     <tr>
                         <!--zona info del producto-->
-                        <td rowspan="2" class="cuerpoCarta" onclick="verinfo()">
+                        <td rowspan="2" class="cuerpoCarta" onclick="location.href ='../productos/productoInfo.jsp?<%out.print(id);%>'">
                             
                             <table width="100%">
                                 <tr>
