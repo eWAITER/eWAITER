@@ -101,7 +101,7 @@
                                     </span>
                                     <span>y </span>
                                     <span class="seleccionSegundoLvl" id="subcat">
-                                        <select>
+                                        <select name="CatSub">
                                             <option>Subcategorias</option>
                                             <%
                                                 try {
@@ -124,11 +124,11 @@
                                             %>   
                                         </select>
                                     </span>
-                                    <span class="SpabotonAplicar"><button>Aplicar</button></span>
+                                        <span class="SpabotonAplicar"><button onclick="lista()">Aplicar</button></span>
                                 </div>
                             </td>
                             <td class="buscar">
-                                <input class="buscador"  placeholder="Buscar" />
+                                <input name="buscador" class="buscador"  placeholder="Buscar" />
                                 <input type="image" src="http://ewaiter.netau.net/fotos/botones/buscar.png" class="clickBuscar">
                             </td>
                         </tr>
@@ -145,7 +145,7 @@
 
             </div>
             <!--ZONA VISUALIZACIÓN-->
-            <div class="cajaScroll">
+            <div class="cajaScroll" id="tabla">
                 <!-- Aqui se pregunta al servidor cuantas cartas tenermos y se muestran, en el ultimo puesto     border: 2px red solid;-->
                 <!-- primero creo solo para ver-->
                 <%
