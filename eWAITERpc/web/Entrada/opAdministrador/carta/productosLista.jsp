@@ -33,9 +33,18 @@
     }
     //el usuario solo busca
     if(CatPrin.equals("Cat principal") && CatSub.equals("Subcategorias") && !buscador.equals("")){
-        Consulta = "";
+        Consulta = "SELECT p.Nombre, p.Imagen, p.Precio, p.ID_Producto FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.Nombre LIKE '%"+buscador+"%' OR p.ID_Subcategoria IN (SELECT ID_Subcategoria FROM ewaiter.Subcategoria "
+                + "WHERE Nombre LIKE '%"+buscador+"%') OR s.ID_Categoria IN (SELECT c.ID_Categoria FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.ID_Subcategoria = s.ID_Subcategoria AND s.ID_Categoria = c.ID_Categoria AND c.Nombre "
+                + "LIKE '%"+buscador+"%') OR p.Ingredientes LIKE '%"+buscador+"%' OR p.Descripcion LIKE '%"+buscador+"%' GROUP BY p.ID_Producto";
     }
-
+    //usuario busca y categoria principal
+    if(!CatPrin.equals("Cat principal") && CatSub.equals("Subcategorias") && !buscador.equals("")){
+        Consulta = "SELECT Nombre, Imagen, Precio, ID_Producto FROM ewaiter.Producto WHERE ID_Subcategoria IN (SELECT s.ID_Subcategoria FROM ewaiter.Subcategoria s, ewaiter.Categoria c WHERE s.ID_Categoria = c.ID_Categoria AND c.Nombre LIKE '%"+CatPrin+"%') AND ID_Producto IN (SELECT p.ID_Producto FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.Nombre LIKE '%"+buscador+"%' OR p.ID_Subcategoria IN (SELECT ID_Subcategoria FROM ewaiter.Subcategoria WHERE Nombre LIKE '%"+buscador+"%') OR p.Ingredientes LIKE '%"+buscador+"%' OR p.Descripcion LIKE '%"+buscador+"%') GROUP BY ID_Producto";
+    }
+    //busca y subcategoria
+    if(!CatSub.equals("Subcategorias") && !buscador.equals("")){
+        Consulta = "SELECT Nombre, Imagen, Precio, ID_Producto FROM ewaiter.Producto WHERE ID_Subcategoria = (SELECT ID_Subcategoria FROM ewaiter.Subcategoria WHERE Nombre LIKE '%"+CatSub+"%') AND ID_Producto IN (SELECT p.ID_Producto FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.Nombre LIKE '%"+buscador+"%' OR p.ID_Subcategoria IN (SELECT ID_Subcategoria FROM ewaiter.Subcategoria WHERE Nombre LIKE '%"+buscador+"%') OR p.Ingredientes LIKE '%"+buscador+"%' OR p.Descripcion LIKE '%"+buscador+"%') GROUP BY ID_Producto";
+    }
     try {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         con = DriverManager.getConnection(sURL, userName, password);
@@ -91,7 +100,8 @@
 <%
         }
     } catch (Exception e) {
-        out.println("<p>No se encuentran resultados</p>");
+        //out.println("<p>No se encuentran resultados</p>");
+        e.printStackTrace();
     }
 %>
 <table class="tablaNueva">

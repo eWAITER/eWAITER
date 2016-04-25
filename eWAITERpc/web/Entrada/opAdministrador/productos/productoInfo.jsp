@@ -29,8 +29,7 @@
     <body onload="controlTamano(this); myFunction()">
         <%
     String ID =  request.getQueryString();    
-//SELECT * FROM ewaiter.Producto WHERE ID_Producto = " + tu_ID
-/*
+
         Connection con;
         Statement set;
         ResultSet rs;
@@ -41,18 +40,16 @@
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(sURL, userName, password);
             set = con.createStatement();
-            rs = set.executeQuery("SELECT * FROM ewaiter.Producto WHERE ID_Producto = "+ID+";");
+            rs = set.executeQuery("SELECT ID_Producto, Nombre, Imagen, Descripcion, Ingredientes, Precio FROM ewaiter.Producto WHERE ID_Producto = "+ID+";");
             while (rs.next()) {
-                String Nombre = rs.getString("Nombre");
-                out.println("<option>" + Nombre + "</option>");
-            }
-            con.close();
-            set.close();
-            rs.close();
-        } catch (Exception e) {
-            out.println("<option>No se encuentran resultados</option>");
-        }
-*/
+                String idproducto = rs.getString("ID_Producto");
+                String nombre = rs.getString("Nombre");
+                String imagen = rs.getString("Imagen");
+                String descripcion = rs.getString("Descripcion");
+                String ingredientes = rs.getString("Ingredientes");
+                String precio = rs.getString("Precio");                
+           
+
     %> 
 
 
@@ -62,9 +59,9 @@
                 response.sendRedirect("../../index.html#NoTeHasLogeado");
                 //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
             } else {
-                String nombre = session.getAttribute("nombreCliente").toString();
+                String nombreS = session.getAttribute("nombreCliente").toString();
                 out.println(
-                        "<span class='Pcabecera'>Hola usuario " + nombre + " |<a href='../../../index.html'> Desconectar </a></span>");
+                        "<span class='Pcabecera'>Hola usuario " + nombreS + " |<a href='../../../index.html'> Desconectar </a></span>");
             }
 
 
@@ -75,7 +72,7 @@
                     <td class="menuHomeOFF" onClick="location.href = '../../pcinicio.jsp'">
                         <image src="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%2045x45.png" />
                     </td>
-                    <td class="menuON">
+                    <td class="menuON" onClick="location.href = '../carta/carta.jsp'">
                         Carta
                     </td>
                     <td class="menuOFF">
@@ -96,11 +93,73 @@
 
 
         <fieldset class="fielseWa">
-            <legend class="legeneWa">Carta</legend>
+            <legend class="legeneWa"><%out.println(nombre);%></legend>
             <!--ZONA CONSULA-->
+            
+            <table class="tablaGeneralInfo">
+                <tr>
+                    <td rowspan="4" width="40%" height="40%"><img class="imgInfo" src="<%out.println(imagen);%>"/></td>
+                    <td class="titulosInfo" colspan="2">Descripción</td>
+                </tr>
+                <tr>
+                    <td width="60%" height="30%" colspan="2">
+                        <div class="cajaScrollInfo" id="tabla">
+                            <p><%out.println(descripcion);%></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="titulosInfo" colspan="2">Ingredientes</td>
+                </tr>
+                <tr>
+                    <td width="60%" height="30%" colspan="2">
+                         <div class="cajaScrollInfo" id="tabla">
+                            <p><%out.println(ingredientes);%></p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Infolateral"><%out.println(nombre);%></td>
+                    <td rowspan="2" class="InfoBotones">
+                        
+                        <table class="infoEdit"> <!-- Edit -->
+                            <tr>
+                                <td><img class="infoImgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png"></td>
+                                <td class="txtInfoEdityDelete">Editar</td>
+                            </tr>
+                        </table>
+                        
+                    </td>
+                    <td rowspan="2" class="InfoBotones">
+                        
+                        <table class="infoBorrar"> <!-- Delete -->
+                            <tr>
+                                <td><img class="infoImgEliminarCarta" src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
+                                <td class="txtInfoEdityDelete">Borrar</td>
+                            </tr>   
+                        </table>
+                        
+                    </td>    
+                        
+                                                  
+                    
+                </tr>
+                <tr>
+                    <td class="Infolateral" colspan="2"><%out.println(precio+"€");%></td>
+                    
+                </tr>
+            </table>
         </fieldset>
         
         
-        
+<%
+        }
+            con.close();
+            set.close();
+            rs.close();
+        } catch (Exception e) {
+            out.println("<p>Error inesperado, contacte con el administrador</p>");
+        }
+%>
     </body>
 </html>

@@ -218,3 +218,91 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     color: #eee;
 }
 /*css de botones */
+/* zona de info producto*/
+.tablaGeneralInfo{
+    width: 100%; 
+    height: 100%;
+}
+.imgInfo{
+    width: 85%;
+    height: 60%;
+}
+.titulosInfo{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 17px;
+    width: 60%;
+    height: 10%;
+}
+.cajaScrollInfo{
+    margin-top: -5%;
+    margin-bottom: -5%;
+    background : #F5F5F5;
+    width : 100%;
+    height: 100px;/*no puede ser responsive, control por js*/
+    overflow : auto;
+}
+.Infolateral{
+    width: 40%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.InfoBotones{
+    width: 30%;
+    height: 10%;
+    text-align: center;
+}
+
+
+
+.infoImgEditarCarta{
+    height: 55px;
+    width: 50px;
+    margin-right: 50px;
+    margin-left: 15px;
+}
+.txtInfoEdityDelete{
+    font-size: 45px;
+    padding-right: 50px;
+}
+.infoEdit{
+    margin-left: 15%;
+    border-radius: 0 3px 0 0;
+    border-collapse:initial;
+    border: solid #9A9A9A 1px;
+    width: 5%;    
+    background-color: #FFC903;
+    text-align: center;
+}
+.infoEdit:hover{
+    background-color: #FFD646;
+}
+.infoEdit:active{
+    background-color: #D2A300;
+}
+
+
+.infoBorrar{
+    margin-left: 15%;
+    border-radius: 0 3px 0 0;
+    border-collapse:initial;
+    border: solid #9A9A9A 1px;
+    width: 5%;  
+    background-color: #DE514B;
+    text-align: center;
+}
+.infoBorrar:hover{
+    background-color: #E26B65; 
+}
+.infoBorrar:active{
+    background-color: #B42821;
+}
+.infoImgEliminarCarta{
+    height: 55px;
+    width: 50px;
+    margin-right: 50px;
+    margin-left: 15px;
+}
+
+/*zona de edit prodcuto*/
