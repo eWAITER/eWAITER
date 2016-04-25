@@ -98,7 +98,17 @@
             
             <table class="tablaGeneralInfo">
                 <tr>
-                    <td rowspan="4" width="40%" height="40%"><img class="imgInfo" src="<%out.println(imagen);%>"/></td>
+                    <td rowspan="4" width="40%" height="40%">
+                        <%
+                        if (imagen != null) {
+                            out.println("<img class='imgInfo' src='"+imagen+"'/>");
+                        }else{
+                            %>
+                            <img class='imgInfo' src="../../../img/imgpred.png"/>
+                        <%
+                        }
+                        %>
+                    </td>
                     <td class="titulosInfo" colspan="2">Descripción</td>
                 </tr>
                 <tr>
@@ -119,7 +129,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="Infolateral"><%out.println(nombre);%></td>
+                    <td class="Infolateral" id="nombreAlert"><%out.println(nombre);%></td>
                     <td rowspan="2" class="InfoBotones">
                         
                         <table class="infoEdit"> <!-- Edit -->
@@ -132,7 +142,7 @@
                     </td>
                     <td rowspan="2" class="InfoBotones">
                         
-                        <table class="infoBorrar"> <!-- Delete -->
+                        <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
                             <tr>
                                 <td><img class="infoImgEliminarCarta" src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
                                 <td class="txtInfoEdityDelete">Borrar</td>
