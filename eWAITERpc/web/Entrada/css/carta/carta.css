@@ -224,8 +224,8 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     height: 100%;
 }
 .imgInfo{
-    width: 85%;
-    height: 350px;
+    width: 100%;
+    height: 50%;
 }
 .titulosInfo{
     text-decoration: underline;
@@ -253,6 +253,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     width: 30%;
     height: 10%;
     text-align: center;
+    padding-right: 85px;
 }
 
 
@@ -305,5 +306,60 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     margin-right: 50px;
     margin-left: 15px;
 }
-
+.textoResultadoInfo{
+    font-size: 24px;
+}
+.subido{
+    padding-bottom: 20px;
+    padding-top: 20px;
+     padding-left: 43px;
+}
 /*zona de edit prodcuto*/
+.tablaGeneralEdit{
+    width: 100%; 
+    height: 100%;
+}
+.zonaImgPre{
+    width: 35%;
+    text-align: center;
+}
+.zonaDesBot{
+    width: 65%;
+}
+.imgEdit{
+    width: 100%;
+    height: 50%;
+}
+.colocInput{
+    text-align: center;
+    padding-left: 8%;/*si es muy grande se acaba descuadrando basto*/
+}
+.imputImg{
+    align-content: center;
+    margin-top: 10px;
+}
+.editNombre{
+    width: 100%;
+}
+.legeneWaEdit{
+    display: block;
+    padding-left: 2px;
+    padding-right: 0px;
+    width: auto;
+    border-bottom: 0px solid;
+}
+.fielseWaEdit{
+    display: block;
+    margin-left: 3%;
+    margin-right: 3%;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove;
+    border-radius: 7px;
+    text-align: start; /*puede dar algun problema*/
+}
+.editDescr{
+    width: 100%;
+}

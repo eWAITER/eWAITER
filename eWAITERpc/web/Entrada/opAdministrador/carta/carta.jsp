@@ -46,16 +46,16 @@
                     <td class="menuON">
                         Carta
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../menus/menus.jsp'">
                         Menús
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../mesas/mesas.jsp'">
                         Mesas
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../camareros/camareros.jsp'">
                         Camareros
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../caja/caja.jsp'">
                         Caja
                     </td>
                 </tr>

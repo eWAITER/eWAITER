@@ -40,15 +40,16 @@
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(sURL, userName, password);
             set = con.createStatement();
-            rs = set.executeQuery("SELECT ID_Producto, Nombre, Imagen, Descripcion, Ingredientes, Precio FROM ewaiter.Producto WHERE ID_Producto = "+ID+";");
+            rs = set.executeQuery("SELECT p.ID_Producto, p.Nombre, p.Imagen, p.Descripcion, p.Ingredientes, p.Precio, s.Nombre, c.Nombre FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.ID_Producto = "+ID+" AND p.ID_Subcategoria = s.ID_Subcategoria AND s.ID_Categoria = c.ID_Categoria");
             while (rs.next()) {
-                String idproducto = rs.getString("ID_Producto");
-                String nombre = rs.getString("Nombre");
-                String imagen = rs.getString("Imagen");
-                String descripcion = rs.getString("Descripcion");
-                String ingredientes = rs.getString("Ingredientes");
-                String precio = rs.getString("Precio");                
-           
+                String idproducto = rs.getString("p.ID_Producto");
+                String nombre = rs.getString("p.Nombre");
+                String imagen = rs.getString("p.Imagen");
+                String descripcion = rs.getString("p.Descripcion");
+                String ingredientes = rs.getString("p.Ingredientes");
+                String precio = rs.getString("p.Precio");                
+                String subcategoria = rs.getString("s.Nombre");
+                String categoriaPrincipal = rs.getString("c.Nombre");
 
     %> 
 
@@ -61,7 +62,7 @@
             } else {
                 String nombreS = session.getAttribute("nombreCliente").toString();
                 out.println(
-                        "<span class='Pcabecera'>Hola usuario " + nombreS + " |<a href='../../../index.html'> Desconectar </a></span>");
+                        "<span class='Pcabecera'>Hola " + nombreS + " |<a href='../../../index.html'> Desconectar </a></span>");
             }
 
 
@@ -75,16 +76,16 @@
                     <td class="menuON" onClick="location.href = '../carta/carta.jsp'">
                         Carta
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../menus/menus.jsp'">
                         Menús
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../mesas/mesas.jsp'">
                         Mesas
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../camareros/camareros.jsp'">
                         Camareros
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../caja/caja.jsp'">
                         Caja
                     </td>
                 </tr>
@@ -130,9 +131,14 @@
                 </tr>
                 <tr>
                     <td class="Infolateral" id="nombreAlert"><%out.println(nombre);%></td>
-                    <td rowspan="2" class="InfoBotones">
+                    <td class="subido"><span class="titulosInfo">Categoría principal:</span><span class="textoResultadoInfo"><%out.println(" "+categoriaPrincipal);%></span></td>
+                    <td class="subido"><span class="titulosInfo">Subcategoría:</span><span class="textoResultadoInfo"><%out.println(" "+subcategoria);%></span></td>
+                </tr>
+                <tr>
+                    <td class="Infolateral"><%out.println(precio+"€");%></td>
+                    <td class="InfoBotones">
                         
-                        <table class="infoEdit"> <!-- Edit -->
+                        <table class="infoEdit" onclick="location.href ='productoEdit.jsp?<%out.print(ID);%>'"> <!-- Edit -->
                             <tr>
                                 <td><img class="infoImgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png"></td>
                                 <td class="txtInfoEdityDelete">Editar</td>
@@ -140,7 +146,7 @@
                         </table>
                         
                     </td>
-                    <td rowspan="2" class="InfoBotones">
+                    <td class="InfoBotones">
                         
                         <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
                             <tr>
@@ -150,18 +156,12 @@
                         </table>
                         
                     </td>    
-                        
-                                                  
-                    
-                </tr>
-                <tr>
-                    <td class="Infolateral" colspan="2"><%out.println(precio+"€");%></td>
-                    
                 </tr>
             </table>
         </fieldset>
         
-        
+        <p class="publi">Restaurante %Null% - eWaiter v0.9 2016</p>
+        <script src="./Signin Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
 <%
         }
             con.close();

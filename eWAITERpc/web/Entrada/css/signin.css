@@ -74,6 +74,7 @@ body {
     padding-right: 0.75em;
     border: 2px groove;
     border-radius: 7px;
+    text-align: start; /*puede dar algun problema*/
 }
 
 .Pcabecera{

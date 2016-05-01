@@ -20,6 +20,7 @@ body {
     padding-right: 0px;
     width: auto;
     border-bottom: 0px solid;
+    text-align: start; /*puede dar algun problema*/
 }
 .fielseWa{
     display: block;

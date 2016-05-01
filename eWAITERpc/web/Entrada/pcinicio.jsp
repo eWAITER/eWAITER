@@ -33,7 +33,7 @@
                 String nombre = session.getAttribute("nombreCliente").toString();
                 out.println(""
                         + "<span class='pCabeceraBotonAtras'></span>"
-                        + "<span class='Pcabecera'>Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></span>");
+                        + "<span class='Pcabecera'>Hola "+nombre+" |<a href='../index.html'> Desconectar </a></span>");
             }
                  
             
