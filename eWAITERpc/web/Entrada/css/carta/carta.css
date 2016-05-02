@@ -350,7 +350,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 }
 .fielseWaEdit{
     display: block;
-    margin-left: 3%;
+
     margin-right: 3%;
     padding-top: 0.35em;
     padding-bottom: 0.625em;
@@ -359,6 +359,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     border: 2px groove;
     border-radius: 7px;
     text-align: start; /*puede dar algun problema*/
+    width: 100%;
 }
 .editDescr{
     width: 100%;
