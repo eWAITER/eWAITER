@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="../../css/cmxform.css">
         <link href="../../css/signin.css" rel="stylesheet">
         <link href="../../css/carta/carta.css" rel="stylesheet">
-        <script type="text/javascript" src="./../../js/javascripto.js"></script>
+        <script type="text/javascript" src="../../js/javascripto.js"></script>
         <script type="text/javascript" src="../../js/controlTamanoResultados.js"></script>
         <script type="text/javascript" src="../../js/Combos.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>

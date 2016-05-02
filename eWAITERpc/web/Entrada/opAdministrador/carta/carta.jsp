@@ -165,7 +165,7 @@
                 <table class="tablaExistente">
                     <tr>
                         <!--zona info del producto-->
-                        <td rowspan="2" class="cuerpoCarta" onclick="location.href ='../productos/productoInfo.jsp?<%out.print(id);%>'">
+                        <td rowspan="2" class="cuerpoCarta" onclick="location.href ='productoInfo.jsp?<%out.print(id);%>'">
                             
                             <table width="100%">
                                 <tr>
@@ -192,7 +192,7 @@
                         </td>
                         <!--FIN ZONA INFO PRODUCTO-->
 
-                        <td class="editarCarta">
+                        <td class="editarCarta" onclick="location.href ='../productos/productoEdit.jsp?<%out.print(id);%>'">
                             <img class="imgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png">
                         </td>
                     </tr>

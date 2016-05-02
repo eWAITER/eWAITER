@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="../../css/cmxform.css">
         <link href="../../css/signin.css" rel="stylesheet">
         <link href="../../css/carta/carta.css" rel="stylesheet">
-        <script type="text/javascript" src="./../../js/javascripto.js"></script>
+        <script type="text/javascript" src="../../js/javascripto.js"></script>
         <script type="text/javascript" src="../../js/controlTamanoResultados.js"></script>
         <script type="text/javascript" src="../../js/Combos.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
@@ -152,8 +152,9 @@
                                 <fieldset class="fielseWaEdit">
                                     <legend class="legeneWa">Categoría</legend>
                                     <div>
-                                        hola    
-                                        <select name="CatPrin" onchange="comboSubCat()">
+                                        hola
+                                        <span id="subcat">
+                                            <select name="CatPrin" onchange="comboSubCat()">
                                             <option><%out.println(categoriaPrincipal);%></option>
                                             <%
                                             try {
@@ -173,6 +174,7 @@
                                                 }
                                             %>
                                         </select>
+                                        </span>
                                     </div>
                                     <div>
                                     Tipo 
@@ -201,40 +203,7 @@
                                         </select>
                                     </div>
                                 </fieldset>
-                                
                             </div>
-                            
-                            
-                            
-                            
-                            <!--<table>
-                                <tr>
-                                    <td colspan="2">
-                                        <fieldset class="fielseWaEdit">
-                                            <legend class="legeneWa">Nombre</legend>
-                                            <input class="editNombre" type="text" name="nombre" maxlength="90" <%out.println("value='"+nombre+"'");%>>
-                                        </fieldset>    
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <fieldset class="fielseWaEdit">
-                                            <legend class="legeneWa">Descripción</legend>
-                                        <textarea name="descripcion" class="editDescr"><%out.println(descripcion);%></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>-->
                         </td>
                     </tr>
                 </table>
