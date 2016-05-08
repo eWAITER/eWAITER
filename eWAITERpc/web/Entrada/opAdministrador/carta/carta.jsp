@@ -192,7 +192,7 @@
                         </td>
                         <!--FIN ZONA INFO PRODUCTO-->
 
-                        <td class="editarCarta" onclick="location.href ='../productos/productoEdit.jsp?<%out.print(id);%>'">
+                        <td class="editarCarta" onclick="location.href ='productoEdit.jsp?<%out.print(id);%>'">
                             <img class="imgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png">
                         </td>
                     </tr>

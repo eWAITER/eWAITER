@@ -350,7 +350,6 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 }
 .fielseWaEdit{
     display: block;
-
     margin-right: 3%;
     padding-top: 0.35em;
     padding-bottom: 0.625em;
@@ -360,7 +359,26 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     border-radius: 7px;
     text-align: start; /*puede dar algun problema*/
     width: 100%;
+    height: 100%;
 }
 .editDescr{
     width: 100%;
+    height: 80%;
+}
+.tablaCategoria{
+    width: 100%;
+}
+.nombreCat{
+    width: 10%;
+    text-align: right;
+    padding-right: 3%;
+}
+.catCombo{
+    width: 25%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+.anadirSubCat{
+    width: 65%;
+    text-align: center;
 }
