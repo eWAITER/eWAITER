@@ -28,35 +28,33 @@
     </head>      
     <body onload="controlTamano(this); myFunction()">
         <%
-    String ID =  request.getQueryString();    
+            String ID = request.getQueryString();
 
-        Connection con;
-        Statement set;
-        ResultSet rs;
-        String sURL = "jdbc:mysql://db4free.net";
-        String userName = "ewaiter";
-        String password = "ewaiterroot100";
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(sURL, userName, password);
-            set = con.createStatement();
-            rs = set.executeQuery("SELECT p.ID_Producto, p.Nombre, p.Imagen, p.Descripcion, p.Ingredientes, p.Precio, s.Nombre, c.Nombre FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.ID_Producto = "+ID+" AND p.ID_Subcategoria = s.ID_Subcategoria AND s.ID_Categoria = c.ID_Categoria");
-            while (rs.next()) {
-                String idproducto = rs.getString("p.ID_Producto");
-                String nombre = rs.getString("p.Nombre");
-                String imagen = rs.getString("p.Imagen");
-                String descripcion = rs.getString("p.Descripcion");
-                String ingredientes = rs.getString("p.Ingredientes");
-                String precio = rs.getString("p.Precio");                
-                String subcategoria = rs.getString("s.Nombre");
-                String categoriaPrincipal = rs.getString("c.Nombre");
+            Connection con;
+            Statement set;
+            ResultSet rs;
+            String sURL = "jdbc:mysql://db4free.net";
+            String userName = "ewaiter";
+            String password = "ewaiterroot100";
+            try {
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                con = DriverManager.getConnection(sURL, userName, password);
+                set = con.createStatement();
+                rs = set.executeQuery("SELECT p.ID_Producto, p.Nombre, p.Imagen, p.Descripcion, p.Ingredientes, p.Precio, s.Nombre, c.Nombre FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.ID_Producto = " + ID + " AND p.ID_Subcategoria = s.ID_Subcategoria AND s.ID_Categoria = c.ID_Categoria");
+                while (rs.next()) {
+                    String idproducto = rs.getString("p.ID_Producto");
+                    String nombre = rs.getString("p.Nombre");
+                    String imagen = rs.getString("p.Imagen");
+                    String descripcion = rs.getString("p.Descripcion");
+                    String ingredientes = rs.getString("p.Ingredientes");
+                    String precio = rs.getString("p.Precio");
+                    String subcategoria = rs.getString("s.Nombre");
+                    String categoriaPrincipal = rs.getString("c.Nombre");
 
-    %> 
+        %> 
 
 
-        <%
-
-            if (session.getAttribute("nombreCliente") == null) {
+        <%            if (session.getAttribute("nombreCliente") == null) {
                 response.sendRedirect("../../index.html#NoTeHasLogeado");
                 //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
             } else {
@@ -64,7 +62,6 @@
                 out.println(
                         "<span class='Pcabecera'>Hola " + nombreS + " |<a href='../../../index.html'> Desconectar </a></span>");
             }
-
 
         %>
         <div class="zonaMenu">
@@ -92,84 +89,110 @@
             </table>
         </div>
 
-
         <fieldset class="fielseWa">
             <legend class="legeneWa"><%out.println(nombre);%></legend>
-            <!--ZONA CONSULA-->
-            
-            <table class="tablaGeneralInfo">
-                <tr>
-                    <td rowspan="4" width="40%" height="40%">
-                        <%
-                        if (imagen != null) {
-                            out.println("<img class='imgInfo' src='"+imagen+"'/>");
-                        }else{
-                            %>
-                            <img class='imgInfo' src="../../../img/imgpred.png"/>
-                        <%
-                        }
-                        %>
-                    </td>
-                    <td class="titulosInfo" colspan="2">Descripción</td>
-                </tr>
-                <tr>
-                    <td width="60%" height="30%" colspan="2">
-                        <div class="cajaScrollInfo" id="tabla">
-                            <p><%out.println(descripcion);%></p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="titulosInfo" colspan="2">Ingredientes</td>
-                </tr>
-                <tr>
-                    <td width="60%" height="30%" colspan="2">
-                         <div class="cajaScrollInfo" id="tabla">
-                            <p><%out.println(ingredientes);%></p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="Infolateral" id="nombreAlert"><%out.println(nombre);%></td>
-                    <td class="subido"><span class="titulosInfo">Categoría principal:</span><span class="textoResultadoInfo"><%out.println(" "+categoriaPrincipal);%></span></td>
-                    <td class="subido"><span class="titulosInfo">Subcategoría:</span><span class="textoResultadoInfo"><%out.println(" "+subcategoria);%></span></td>
-                </tr>
-                <tr>
-                    <td class="Infolateral"><%out.println(precio+"€");%></td>
-                    <td class="InfoBotones">
-                        
-                        <table class="infoEdit" onclick="location.href ='productoEdit.jsp?<%out.print(ID);%>'"> <!-- Edit -->
+
+            <table class="tablaGeneralEdit"><!--tabla general que contiene todo-->
+                <tr class="zonaImgPre">
+                    <td><!--img y precio-->
+                        <table>
                             <tr>
-                                <td><img class="infoImgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png"></td>
-                                <td class="txtInfoEdityDelete">Editar</td>
+                                <td>
+                                    <fieldset class="fielseWa">
+                                        <legend class="legeneWa">Imagen</legend>
+
+                                        <%
+                                            if (imagen != null) {
+                                                out.println("<img class='imgEdit' src='" + imagen + "'/>");
+                                            } else {
+                                        %>
+                                        <img class='imgInfo' src="../../../img/imgpred.png"/>
+                                        <%
+                                            }
+                                        %>
+
+                                    </fieldset>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <fieldset class="fielseWa">
+                                        <legend class="legeneWa">Datos</legend>
+                                        <p>Nombre: <%out.println(nombre);%></p>
+                                        <p>Precio: <%out.println(precio);%>€</p>
+                                    </fieldset>
+                                </td>
                             </tr>
                         </table>
-                        
                     </td>
-                    <td class="InfoBotones">
-                        
-                        <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
-                            <tr>
-                                <td><img class="infoImgEliminarCarta" src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
-                                <td class="txtInfoEdityDelete">Borrar</td>
-                            </tr>   
-                        </table>
-                        
-                    </td>    
+
+                    <td class="zonaDesBot">
+                        <fieldset class="infoFieldseWaInfDesc">
+                            <legend class="legeneWaEdit">Descripción</legend>
+                            <div class="cajaScrollInfo">
+                                <p class="editDescr"><%out.println(descripcion);%></p>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="infoFieldseWaInfIng">
+                            <legend class="legeneWaEdit">Ingredientes</legend>
+                            <div class="cajaScrollInfoIng">
+                                <p class="InfIng"><%out.println(ingredientes);%></p>
+                            </div>
+                        </fieldset>    
+
+
+                        <div style="width: 100%">
+                            <fieldset class="fielseWaEdit">
+                                <legend class="legeneWa">Categoría</legend>
+                                <span class="nombreCatInf">Cat.Principal: <%out.println(categoriaPrincipal);%></span>
+                                <span class="nombreCatInf">SubCategoria : <%out.println(subcategoria);%></span>  
+                            </fieldset>
+                        </div>
+                        <div style="width: 100%; margin-top: 1%; margin-bottom: 1%;"><!--botnes-->
+
+                            <table>
+                                <tr>
+                                    <td>
+                                        <table class="infoEdit" onclick="location.href = 'productoEdit.jsp?<%out.print(ID);%>'">
+                                            <tr>
+                                                <td><img class="infoImgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png"></td>
+                                                <td class="txtInfoEdityDelete">Editar</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="margin-left: 50px;">
+                                        <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
+                                            <tr>
+                                                <td><img class="infoImgEliminarCarta" 
+                                                         src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
+                                                <td class="txtInfoEdityDelete">Borrar</td>
+                                            </tr>   
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+                                            
+                        </div>
+                    </td>
                 </tr>
             </table>
+
+
         </fieldset>
-        
+
         <p class="publi">Restaurante %Null% - eWaiter v0.9 2016</p>
         <script src="./Signin Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
-<%
-        }
-            con.close();
-            set.close();
-            rs.close();
-        } catch (Exception e) {
-            out.println("<p>Error inesperado, contacte con el administrador</p>");
-        }
-%>
+        <%
+                }
+                con.close();
+                set.close();
+                rs.close();
+            } catch (Exception e) {
+                out.println("<p>Error inesperado, contacte con el administrador</p>");
+            }
+        %>
     </body>
 </html>

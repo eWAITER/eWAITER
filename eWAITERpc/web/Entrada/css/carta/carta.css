@@ -224,40 +224,30 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     height: 100%;
 }
 .imgInfo{
-    width: 100%;
-    height: 50%;
+    height: 85%;
+    width: 85%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 .titulosInfo{
+    text-align: left;
     text-decoration: underline;
     font-weight: bold;
     font-size: 24px;
-    width: 60%;
-    height: 10%;
+}
+.textoInfo{
+    font-size: 17px;
+    text-align: left;
 }
 .cajaScrollInfo{
-    margin-top: -5%;
-    margin-bottom: -5%;
     background : #F5F5F5;
     width : 100%;
-    height: 100px;/*no puede ser responsive, control por js*/
+    height: 150px;/*no puede ser responsive, control por js*/
     overflow : auto;
     font-size: 16px;
+    border-color: #000;
 }
-.Infolateral{
-    width: 40%;
-    height: 50px;
-    font-size: 25px;
-    font-weight: bold;
-}
-.InfoBotones{
-    width: 30%;
-    height: 10%;
-    text-align: center;
-    padding-right: 85px;
-}
-
-
-
 .infoImgEditarCarta{
     height: 55px;
     width: 50px;
@@ -269,7 +259,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     padding-right: 50px;
 }
 .infoEdit{
-    margin-left: 15%;
+    margin-left: 10%;
     border-radius: 0 3px 0 0;
     border-collapse:initial;
     border: solid #9A9A9A 1px;
@@ -286,7 +276,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 
 
 .infoBorrar{
-    margin-left: 15%;
+    margin-left: 33%;
     border-radius: 0 3px 0 0;
     border-collapse:initial;
     border: solid #9A9A9A 1px;
@@ -306,9 +296,50 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     margin-right: 50px;
     margin-left: 15px;
 }
-.textoResultadoInfo{
-    font-size: 24px;
+.infoFieldseWaInfDesc{
+    display: block;
+    margin-right: 3%;
+    padding-top: 0;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove;
+    border-radius: 7px;
+    text-align: start;
+    width: 100%;
+    height: 50%;
 }
+.infoFieldseWaInfIng{
+    display: block;
+    margin-right: 3%;
+    padding-top: 0;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove;
+    border-radius: 7px;
+    text-align: start;
+    width: 100%;
+    height: 25%;
+}
+.cajaScrollInfoIng{
+    background : #F5F5F5;
+    width : 100%;
+    height: 45px;/*no puede ser responsive, control por js*/
+    overflow : auto;
+    font-size: 16px;
+    border-color: #000;
+}
+.InfIng{
+    width: 100%;
+    height: 40%;
+}
+.nombreCatInf{
+    width: 10%;
+    text-align: right;
+    padding-right: 25%;
+}
+
 .subido{
     padding-bottom: 20px;
     padding-top: 20px;
@@ -318,6 +349,7 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
 .tablaGeneralEdit{
     width: 100%; 
     height: 100%;
+    margin-top: -2%;
 }
 .zonaImgPre{
     width: 35%;
