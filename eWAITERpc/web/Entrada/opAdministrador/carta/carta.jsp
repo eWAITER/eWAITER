@@ -17,9 +17,10 @@
         <link href="../../css/signin.css" rel="stylesheet">
         <link href="../../css/carta/carta.css" rel="stylesheet">
         <script type="text/javascript" src="./../../js/javascripto.js"></script>
-        <script type="text/javascript" src="../../js/controlTamanoResultados.js"></script>
-        <script type="text/javascript" src="../../js/Combos.js"></script>
+        <script type="text/javascript" src="../../js/carta/controlTamanoResultados.js"></script>
+        <script type="text/javascript" src="../../js/carta/Combos.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" src="../../js/carta/cartaControl.js"></script>
     </head>
     <body onload="controlTamano(this); myFunction()">
 
@@ -197,7 +198,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="eliminarCarta">
+                        <td class="eliminarCarta" onclick="borrarPosCarta()()">
                             <img class="imgEliminarCarta" src="http://ewaiter.netau.net/fotos/botones/borrar.png">
                         </td>
                     </tr>

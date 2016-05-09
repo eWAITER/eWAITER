@@ -1,0 +1,110 @@
+/*crear un nuevo menu*/
+.tablaNueva{  
+    width: 100%;
+    height: 105px;
+    border:2px solid;
+    border-color:#000;
+    border-radius: 25px;
+    border-collapse:initial;
+    margin-bottom: 2%;
+    text-align: center;
+    border-width:2px;	
+    border-style:dashed;
+    font-size: 68px;
+    color: #404040;
+}
+.tablaNueva:hover{
+    border-color: #6A6A6A;
+    color: #6A6A6A;
+}
+.tablaNueva:active{
+    border-color: #eee;
+    color: #eee;
+}
+/*menus existentes*/
+.tablaExistente{
+    width: 100%;
+    height: 105px;
+    border:2px solid;
+    border-color:#000;
+    border-radius: 15px;
+    border-collapse:initial;
+    margin-bottom: 2%;
+   }
+/*
+DENTRO DE LA TABLA SE RECREAN LOS BOTNES A BASE DE ESTILOS CADA ZONA DE ESTA TABLE 
+TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
+*/
+
+.cuerpoCarta{
+    width: 95%;
+    background-color: #DFDFD5;
+    border-collapse:initial;
+    border-radius: 15px 0 0 15px;
+    color: #404040;
+}
+.cuerpoCarta:hover{
+    background-color: #E8E8E1;
+    color: #3A3A3A;
+}
+.cuerpoCarta:active{
+    background-color: #BBBBA6;
+    color: #5C5C5C;
+}
+.imagenEscupidera{
+    height: 85px;
+    width: 85px;
+    border:3px solid #021a40;
+    border-radius: 8px;
+}
+.nombreCarta{
+    width: 80%;
+    padding-left: 2%;
+    font-size: 34px;
+}
+.precioCarta{
+    width: 8%;
+    
+    font-size: 32px;
+}
+.editarCarta{
+    border-radius: 0 14px 0 0;
+    border-collapse:initial;
+    width: 5%;    
+    background-color: #FFC903;
+    text-align: center;
+}
+.editarCarta:hover{
+    background-color: #FFD646;
+}
+.editarCarta:active{
+    background-color: #D2A300;
+}
+
+.imgEditarCarta{
+    height: 45px;
+    width: 40px;
+}
+.eliminarCarta{
+    border-radius: 0 0 14px 0;
+    border-collapse:initial;
+    width: 5%;
+    background-color: #DE514B;
+    text-align: center;
+}
+.eliminarCarta:hover{
+    background-color: #E26B65; 
+}
+.eliminarCarta:active{
+    background-color: #B42821;
+}
+.imgEliminarCarta{
+    height: 45px;
+    width: 45px;
+}
+
+/*FIN DE BOTONES CARTAS*/
+.publi{
+    text-align: right;
+    margin-right: 3%;
+}
