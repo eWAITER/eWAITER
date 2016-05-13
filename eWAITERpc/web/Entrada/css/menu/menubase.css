@@ -108,3 +108,142 @@ TIENES ESTILOS DIFERENTES PARA ADAPTARSE A LA NECESIDAD
     text-align: right;
     margin-right: 3%;
 }
+/*******************/
+/*Zona de INFO MENU*/
+/*******************/
+.textoNombre{
+    text-align: right;
+    font-weight: bold;
+    font-size: 24px;
+    width: 10%;
+}
+.textoVarNombre{
+    text-align: left;
+    font-size: 24px;
+    margin-left: 1%;
+    width: 50%
+}
+.zonaBotonEditar{
+    width: 25%;
+}
+.zonaBotonEliminar{
+    width: 25%;
+}
+.textoPrecio{
+    width: 90%;
+    text-align: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+.textoVarPrecio{
+    width: 10%;
+    padding-left: 1%;
+    text-align: left;
+    font-size: 24px;
+}
+/************************/
+/*BOTONES TABLAS ED/ELMI*/
+/************************/
+.infoEdit{
+    border-radius: 0 3px 0 0;
+    border-collapse:initial;
+    border: solid #9A9A9A 1px;
+    width: 5%;    
+    background-color: #FFC903;
+    text-align: center;
+}
+.infoEdit:hover{
+    background-color: #FFD646;
+}
+.infoEdit:active{
+    background-color: #D2A300;
+}
+.infoImgEditarCarta{
+    height: 55px;
+    width: 50px;
+    margin-right: 50px;
+    margin-left: 15px;
+}
+.txtInfoEdityDelete{
+    font-size: 45px;
+    padding-right: 50px;
+}
+.infoBorrar{
+    border-radius: 0 3px 0 0;
+    border-collapse:initial;
+    border: solid #9A9A9A 1px;
+    width: 5%;  
+    background-color: #DE514B;
+    text-align: center;
+}
+.infoBorrar:hover{
+    background-color: #E26B65; 
+}
+.infoBorrar:active{
+    background-color: #B42821;
+}
+.infoImgEliminarCarta{
+    height: 55px;
+    width: 50px;
+    margin-right: 50px;
+    margin-left: 15px;
+}
+/*******************/
+/*zona de secciones*/
+/*******************/
+.seccionesMenu{
+    width: 40%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 370px;
+    float: left;
+    margin-bottom: 2%;
+}
+.nombreSeccionTabla{
+    height: 15%;
+    background-color: #404040;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+}
+.zonaSeccionPlatos{
+    height: 85%;
+}
+.miniScrollPlatos{
+    margin-top: 1%;
+    background : #F5F5F5;
+    padding : 4px;
+    width : 100%;
+    height: 310px;/*no puede ser responsive, control por js*/
+    overflow : auto;
+}
+.platoMiniTabla{
+    width: 100%;
+    height: 80px;
+    background-color:#C1C1C1;
+    margin-bottom: 1%; 
+}
+.platoMiniTabla:hover{
+    background-color: #F5F5F5;
+}
+.platoMiniTabla:active{
+    background-color:#888888;
+}
+.imgPlatoMiniTabla{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 4%;
+    margin-right: 2%;
+    width: 14%
+}
+.imgPlato{
+    margin-top: 5px;
+    width: 70px;
+    border-radius: 10px;
+    height: 70px;
+}
+.nombrePlatoMiniTabla{
+    margin-top: 5px;
+    width: 80%;
+    font-size: 18px;
+}

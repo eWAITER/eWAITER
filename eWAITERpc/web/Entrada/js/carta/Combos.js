@@ -1,5 +1,4 @@
 function comboSubCat(){
-    alert("hhhasdhh");
     $.post("combo.jsp", $("#data").serialize(),function(data){$("#subcat").html(data);});
 }
 function lista(){

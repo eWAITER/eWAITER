@@ -24,6 +24,7 @@
         <!--propiedad ewaiter-->
         <link rel="stylesheet" href="../../css/menu/menubase.css">      
         <script type="text/javascript" src="../../js/menu/controlTamanoResultados.js"></script>
+        <script type="text/javascript" src="../../js/javascripto.js"></script> 
     </head>
     <body onload="controlTamano(this); myFunction()"><!-- aqui se controla el tamaño de la pantalla para definir tamaños concretos y avisar al usuario en el caso que sea una resolución no optima -->
         <%
@@ -42,7 +43,7 @@
                     <td class="menuHomeOFF" onClick="location.href = '../../pcinicio.jsp'">
                         <image src="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%2045x45.png" />
                     </td>
-                    <td class="menuOFF">
+                    <td class="menuOFF" onClick="location.href = '../carta/carta.jsp'">
                         Carta
                     </td>
                     <td class="menuON" onClick="location.href = '../menus/menus.jsp'">
@@ -77,18 +78,17 @@
                         con = DriverManager.getConnection(sURL, userName, password);
                         set = con.createStatement();
                         rs = set.executeQuery(""
-                                + "SELECT Nombre, Imagen, Precio, ID_Producto FROM ewaiter.Producto"
+                                + "SELECT ID_Menu, Nombre, Precio FROM ewaiter.Menu;"
                         );
                         while (rs.next()) {
+                            String ID = rs.getString("ID_Menu");
                             String Nombre = rs.getString("Nombre");
-                            String Imagen = rs.getString("Imagen");
                             String Precio = rs.getString("Precio");
-                            String id = rs.getString("ID_Producto");
                 %>
                 <table class="tablaExistente">
                     <tr>
                         <!--zona info del producto-->
-                        <td rowspan="2" class="cuerpoCarta" onclick="location.href = 'productoInfo.jsp?<%out.print(id);%>'">
+                        <td rowspan="2" class="cuerpoCarta" onclick="location.href = 'menuInfo.jsp?<%out.print(ID);%>'">
 
                             <table width="100%">
                                 <tr>
@@ -106,7 +106,7 @@
                         </td>
                         <!--FIN ZONA INFO PRODUCTO-->
 
-                        <td class="editarCarta" onclick="location.href = 'productoEdit.jsp?<%out.print(id);%>'">
+                        <td class="editarCarta" onclick="location.href = 'productoEdit.jsp?<%out.print(ID);%>'">
                             <img class="imgEditarCarta" src="http://ewaiter.netau.net/fotos/botones/edit.png">
                         </td>
                     </tr>

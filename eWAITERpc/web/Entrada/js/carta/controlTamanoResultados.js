@@ -1,5 +1,6 @@
-$(document).ready(controlTamano)
-function controlTamano() {
+$(document).ready(controlTamano);
+
+function controlTamanoInfo() {
     if(window.innerHeight <= 900){
         var head  = document.getElementsByTagName('head')[0];
         var link  = document.createElement('link');
@@ -24,5 +25,4 @@ function controlTamano() {
 	link.href = '../../css/carta/cartaV1080.css';
 	head.appendChild(link);
     }
-    
 }

@@ -89,7 +89,7 @@
             </table>
         </div>
 
-        <form id="data" method="post">
+        <form action="../../../GuardaCambiosCarta" id="data" method="post">
             <fieldset class="fielseWa">
                 <legend class="legeneWa"><%out.println(nombre);%></legend>
 
@@ -136,6 +136,13 @@
                                 <fieldset class="fielseWaEdit">
                                     <legend class="legeneWa">Nombre</legend>
                                     <input class="editNombre" type="text" name="nombre" maxlength="90" <%out.println("value='" + nombre + "'");%>>
+                                </fieldset>   
+                            </div>
+
+                            <div  style="">
+                                <fieldset class="fielseWaEdit">
+                                    <legend class="legeneWa">Nombre</legend>
+                                    <input class="editNombre" type="text" name="id" maxlength="90" <%out.println("value='" + ID + "'");%>>
                                 </fieldset>   
                             </div>
 
@@ -211,10 +218,9 @@
                                     </table>
                                 </fieldset>
                             </div>
-
                             <div style="width: 100%; margin-top: 1%; margin-bottom: 1%;"><!--botnes-->
                                 <span style="width: 50%; text-align: center;">
-                                    <button>Guardar</button>
+                                    <button type="submit">Guardar</button>
                                 </span>
                                 <span style="width: 50%; text-align: center;">
                                     <button>eliminar</button>

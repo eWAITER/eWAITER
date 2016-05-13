@@ -54,7 +54,7 @@
                             
                             <p><button class="Badmin" onclick="window.location.href='./opAdministrador/carta/carta.jsp'">Carta</button></p>
                             
-                            <p class="PsepBotones"><button onclick="window.location.href='./opAdministrador/menu.jsp'" class="Badmin">Menús</button></p>
+                            <p class="PsepBotones"><button onclick="window.location.href='../Entrada/opAdministrador/menus/menus.jsp'" class="Badmin">Menús</button></p>
                             
                             <p class="PsepBotones"><button class="Badmin">Mesas</button></p>
                             
