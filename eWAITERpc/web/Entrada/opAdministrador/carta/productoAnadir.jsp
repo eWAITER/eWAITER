@@ -1,8 +1,9 @@
 <%-- 
-    Document   : productoEdit
-    Created on : 17-abr-2016, 18:50:12
+    Document   : productoAnadir
+    Created on : 22-may-2016, 20:47:55
     Author     : Adri
 --%>
+
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -11,7 +12,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>eWAITER - Carta</title>
         <link rel="icon" href="http://ewaiter.netau.net/fotos/logo/logo%20definitivo%2045x45.png">
@@ -25,43 +25,19 @@
         <script type="text/javascript" src="../../js/carta/Combos.js"></script>
         <script type="text/javascript" src="../../js/jquery-1.12.3.min.js"></script>
         <script type="text/javascript" src="../../js/carta/cartaControl.js"></script>
-    </head>      
-    <body onload="controlTamano(this); myFunction()">
+    </head>
+    <body>
         <%
-            String ID = request.getQueryString();
 
-            Connection con;
-            Statement set;
-            ResultSet rs;
-            String sURL = "jdbc:mysql://db4free.net";
-            String userName = "ewaiter";
-            String password = "ewaiterroot100";
-            try {
-                Class.forName("com.mysql.jdbc.Driver").newInstance();
-                con = DriverManager.getConnection(sURL, userName, password);
-                set = con.createStatement();
-                rs = set.executeQuery("SELECT p.ID_Producto, p.Nombre, p.Imagen, p.Descripcion, p.Ingredientes, p.Precio, s.Nombre, c.Nombre FROM ewaiter.Producto p, ewaiter.Subcategoria s, ewaiter.Categoria c WHERE p.ID_Producto = " + ID + " AND p.ID_Subcategoria = s.ID_Subcategoria AND s.ID_Categoria = c.ID_Categoria");
-                while (rs.next()) {
-                    String idproducto = rs.getString("p.ID_Producto");
-                    String nombre = rs.getString("p.Nombre");
-                    String imagen = rs.getString("p.Imagen");
-                    String descripcion = rs.getString("p.Descripcion");
-                    String ingredientes = rs.getString("p.Ingredientes");
-                    String precio = rs.getString("p.Precio");
-                    String subcategoria = rs.getString("s.Nombre");
-                    String categoriaPrincipal = rs.getString("c.Nombre");
-
-        %> 
-
-
-        <%            if (session.getAttribute("nombreCliente") == null) {
+            if (session.getAttribute("nombreCliente") == null) {
                 response.sendRedirect("../../index.html#NoTeHasLogeado");
                 //out.println("<p class='Pcabecera'> Hola usuario "+nombre+" |<a href='../index.html'> Desconectar </a></p>");
             } else {
-                String nombreS = session.getAttribute("nombreCliente").toString();
+                String nombre = session.getAttribute("nombreCliente").toString();
                 out.println(
-                        "<span class='Pcabecera'>Hola " + nombreS + " |<a href='../../../index.html'> Desconectar </a></span>");
+                        "<span class='Pcabecera'>Hola usuario " + nombre + " |<a href='../../../index.html'> Desconectar </a></span>");
             }
+
 
         %>
         <div class="zonaMenu">
@@ -89,9 +65,9 @@
             </table>
         </div>
 
-        <form action="../../../GuardaCambiosCarta" id="data" method="post">
+        <form action="../../../GuardarNuevoPlato" id="data" method="post">
             <fieldset class="fielseWa">
-                <legend class="legeneWa"><%out.println(nombre);%></legend>
+                <legend class="legeneWa">Nuevo plato</legend>
 
                 <table class="tablaGeneralEdit"><!--tabla general que contiene todo-->
                     <tr class="zonaImgPre">
@@ -101,16 +77,7 @@
                                     <td>
                                         <fieldset class="fielseWa">
                                             <legend class="legeneWa">Imagen</legend>
-
-                                            <%
-                                                if (imagen != null) {
-                                                    out.println("<img class='imgEdit' src='" + imagen + "'/>");
-                                                } else {
-                                            %>
-                                            <img class='imgInfo' src="../../../img/imgpred.png"/>
-                                            <%
-                                                }
-                                            %>
+                                            <img class='imgInfoanadir' alt="PLATO" src="http://ewaiter.netau.net/fotos/carta/Heladodet%e9verde.png"/>
                                             <div class="colocInput"><input class="imputImg" type="file" name="foto"></div>
                                         </fieldset>
                                     </td>
@@ -122,7 +89,7 @@
                                             <legend class="legeneWa">Precio</legend>
                                             <span>Coste:</span>
                                             <span>
-                                                <input type="number" min="0" max="99999" step="0.01" <%out.println("value='" + precio + "'");%> name="precio"> €
+                                                <input type="number" min="0" max="99999" step="0.01" value="0.00" name="precio"> €
                                             </span>
                                         </fieldset>
                                     </td>
@@ -135,21 +102,21 @@
                             <div style="width: 100%">
                                 <fieldset class="fielseWaEdit">
                                     <legend class="legeneWa">Nombre</legend>
-                                    <input class="editNombre" type="text" name="nombre" maxlength="90" <%out.println("value='" + nombre + "'");%>>
+                                    <input class="editNombre" type="text" name="nombre" maxlength="90" value="">
                                 </fieldset>   
                             </div>
 
                             <div style="height: 30%;">
                                 <fieldset class="fielseWaEditDescripcion">
                                     <legend class="legeneWa">Descripción</legend>
-                                    <textarea name="descripcion" class="editDescr"><%out.println(descripcion);%></textarea>
+                                    <textarea name="descripcion" class="editDescr"></textarea>
                                 </fieldset>
                             </div>
-                                
+
                             <div style="width: 100%">
                                 <fieldset class="fielseWaEdit">
                                     <legend class="legeneWa">Ingredientes</legend>
-                                    <input class="editNombre" type="text" name="ingredientes" maxlength="90" <%out.println("value='" + ingredientes + "'");%>>
+                                    <input class="editNombre" type="text" name="descripcion" maxlength="90" value="">
                                 </fieldset>   
                             </div>    
 
@@ -162,8 +129,13 @@
                                             <td class="nombreCat">Cat.Principal</td>
                                             <td class="catCombo">
                                                 <select name="CatPrin" onchange="comboSubCat()">
-                                                    <option><%out.println(categoriaPrincipal);%></option>
-                                                    <%
+                                                    <option>Cat principal</option>
+                                                    <%                                                        Connection con;
+                                                        Statement set;
+                                                        ResultSet rs;
+                                                        String sURL = "jdbc:mysql://db4free.net";
+                                                        String userName = "ewaiter";
+                                                        String password = "ewaiterroot100";
                                                         try {
                                                             Class.forName("com.mysql.jdbc.Driver").newInstance();
                                                             con = DriverManager.getConnection(sURL, userName, password);
@@ -173,9 +145,7 @@
                                                             );
                                                             while (rs.next()) {
                                                                 String NombreCP = rs.getString("Nombre");
-                                                                if (!NombreCP.equals(categoriaPrincipal)) {
-                                                                    out.println("<option>" + NombreCP + "</option>");
-                                                                }
+                                                                out.println("<option>" + NombreCP + "</option>");
                                                             }
                                                         } catch (Exception e) {
                                                             out.println("<option>No se encuentran resultados</option>");
@@ -183,31 +153,32 @@
                                                     %>
                                                 </select>
                                             </td>
-                                            <td class="anadirSubCat">Identificador : <a name="id" class="aid"><%out.println(ID);%></a></td>
+                                            <td class="anadirSubCat"></td>
                                         </tr>
                                         <tr>
                                             <td class="nombreCat">Tipo</td>
                                             <td class="catCombo" id="subcat">
                                                 <select name="CatSub">
-                                                    <option><%out.println(subcategoria);%></option>
+                                                    <option>Subcategorias</option>
                                                     <%
                                                         try {
                                                             Class.forName("com.mysql.jdbc.Driver").newInstance();
                                                             con = DriverManager.getConnection(sURL, userName, password);
                                                             set = con.createStatement();
                                                             rs = set.executeQuery(""
-                                                                    + "SELECT s.Nombre FROM ewaiter.Subcategoria s, ewaiter.Categoria c WHERE c.Nombre LIKE '%" + categoriaPrincipal + "%' AND c.ID_Categoria = s.ID_Categoria"
+                                                                    + "SELECT Nombre FROM ewaiter.Subcategoria"
                                                             );
                                                             while (rs.next()) {
-                                                                String NombreSC = rs.getString("Nombre");
-                                                                if (!NombreSC.equals(subcategoria)) {
-                                                                    out.println("<option>" + NombreSC + "</option>");
-                                                                }
+                                                                String Nombre = rs.getString("Nombre");
+                                                                out.println("<option>" + Nombre + "</option>");
                                                             }
+                                                            con.close();
+                                                            set.close();
+                                                            rs.close();
                                                         } catch (Exception e) {
                                                             out.println("<option>No se encuentran resultados</option>");
                                                         }
-                                                    %>   
+                                                    %>     
                                                 </select>
                                             </td>
                                             <td class="anadirSubCat">
@@ -217,39 +188,14 @@
                                     </table>
                                 </fieldset>
                             </div>
-                            
                             <div style="width: 100%; margin-top: 1%; margin-bottom: 1%;"><!--botnes-->
-
-                            <table>
-                                <tr>
-                                    <td>
-                                        <table>
-                                            <tr> 
-                                                <td><button class="btnGuardar" type="submit" value="Guardar"></button></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td style="margin-left: 50px;">
-                                        <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
-                                            <tr>
-                                                <td><img class="infoImgEliminarCarta" 
-                                                         src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
-                                                <td class="txtInfoEdityDelete">Cancelar</td>
-                                            </tr>   
-                                        </table>
-
-                                    </td>
-                                </tr>
-                            </table>
-                                            
-                        </div>                    
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+                                <span style="width: 50%; text-align: center;">
+                                    <input class="btnGuardar" type="submit" value="Guardar">
+                                </span>
+                                <span style="width: 50%; text-align: center;">
+                                    <input class="btnCancelar" type="submit" value="Cancelar" onclick="location.href = '../carta/carta.jsp'">
+                                </span>
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -257,15 +203,5 @@
 
             </fieldset>
         </form>
-        <%
-                }
-                con.close();
-                set.close();
-                rs.close();
-            } catch (Exception e) {
-                out.println("<p>Error inesperado, contacte con el administrador</p>");
-                e.printStackTrace();
-            }
-        %>
     </body>
 </html>

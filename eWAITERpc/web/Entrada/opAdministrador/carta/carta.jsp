@@ -135,7 +135,13 @@
                         </tr>
                         <tr>
                             <td class="crear">
-                                <button class="AnadirProd">Añadir nuevo producto</button>
+                                <table class="infoBorrar" onclick="abrir()"> <!-- Delete -->
+                                    <tr onclick="location.href='productoAnadir.jsp'">
+                                        <td><img class="infoImgEliminarCarta" 
+                                                         src="http://ewaiter.netau.net/fotos/botones/borrar.png"></td>
+                                                <td class="txtInfoEdityDelete">Cancelar</td>
+                                            </tr>   
+                                        </table>
                             </td>
                             <td class="gestionSubcat">
                                 <button class="AnadirProd">Gestionar subcategorías</button>
