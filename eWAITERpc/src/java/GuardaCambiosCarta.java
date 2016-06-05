@@ -16,9 +16,13 @@ import java.security.MessageDigest;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 
 
@@ -94,6 +98,19 @@ public class GuardaCambiosCarta extends HttpServlet {
         
         //SUBIR A LA CARPETA INTERNA
         //esto lo hacemos para que luego se pueda encontrar la imagen deseada a subir
+        
+        String url= "F:\\M13 Projecte\\netbeans\\eWAITER\\eWAITERpc\\web\\Recursos\\ImgTemp";
+        DiskFileItemFactory df = new DiskFileItemFactory();
+        df.setSizeThreshold(15360);//tamaño máximo del archivo
+        df.setRepository(new File(url));//le decimos la ruta donde lo debe guardar
+        ServletFileUpload upload = new ServletFileUpload(df);
+        
+        try{
+            List<FileItem> partes = upload.parseRequest(HttpServletRequest);
+            
+        }catch(Exception e){
+            
+        }
         
         
         //SUBIR AL FTP EXTERNO
