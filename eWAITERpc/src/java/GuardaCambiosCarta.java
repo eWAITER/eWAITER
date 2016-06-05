@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
+/*
+import javax.servlet.MultipartConfigElement;
 import it.sauronsoftware.ftp4j.FTPAbortedException;
 import it.sauronsoftware.ftp4j.FTPClient;
 import it.sauronsoftware.ftp4j.FTPDataTransferException;
 import it.sauronsoftware.ftp4j.FTPException;
 import it.sauronsoftware.ftp4j.FTPFile;
 import it.sauronsoftware.ftp4j.FTPIllegalReplyException;
-import it.sauronsoftware.ftp4j.FTPListParseException;
+import it.sauronsoftware.ftp4j.FTPListParseException;*/
 import java.io.*;
 import java.security.MessageDigest;
 import javax.servlet.*;
@@ -21,16 +23,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemFactory;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
-
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 /**
  *
  * @author Peter
  */
-@WebServlet(urlPatterns={"/GuardaCambiosCarta"})
+@WebServlet(urlPatterns = {"/GuardaCambiosCarta"})
 public class GuardaCambiosCarta extends HttpServlet {
 
     private Connection con;
@@ -38,10 +41,10 @@ public class GuardaCambiosCarta extends HttpServlet {
     private ResultSet rs;
     String cad;
     String pas;
-    
+
     @Override
     public void init(ServletConfig cfg) throws ServletException {//esto es la conexion
-        String sURL="jdbc:mysql://db4free.net";
+        String sURL = "jdbc:mysql://db4free.net";
         //String sURL="jdbc:mysql://localhost/a7416073_ewaiter";
         super.init(cfg);
         //String userName = "root";
@@ -52,11 +55,11 @@ public class GuardaCambiosCarta extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(sURL, userName, password);
             System.out.println("Se ha conectado");
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("No se ha conectado");
         }
-    }    
-    
+    }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -66,8 +69,7 @@ public class GuardaCambiosCarta extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, IllegalStateException {//todo lo que hago con java
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, IllegalStateException {//todo lo que hago con java
         // Obtener la sesion
 
         // Guardar el nombre del cliente en la sesión
@@ -79,26 +81,55 @@ public class GuardaCambiosCarta extends HttpServlet {
         String subcategoria = (String) request.getParameter("CatSub");
         String id = (String) request.getParameter("id");
         String imagen = (String) request.getParameter("foto");
-        boolean existe=false;
+        boolean existe = false;
 
-        
         try {
-            String consulta = "UPDATE ewaiter.Producto SET Nombre = '"+nombre+"', Precio = "+precio+", Descripcion = '"+descripcion+"' WHERE ID_Producto = "+id+" ;";
+            String consulta = "UPDATE ewaiter.Producto SET Nombre = '" + nombre + "', Precio = " + precio + ", Descripcion = '" + descripcion + "' WHERE ID_Producto = " + id + " ;";
             Statement sentenciadelinsert = con.createStatement();
             sentenciadelinsert.executeUpdate(consulta);
 
-           existe = true;
-            
+            existe = true;
+
             rs.close();
             set.close();
         } catch (Exception e) {
             System.out.println("No lee de la tabla");
         }
-        
-        
+    }   
+/*
         //SUBIR A LA CARPETA INTERNA
         //esto lo hacemos para que luego se pueda encontrar la imagen deseada a subir
-        
+ /*
+//Ruta donde se guardara el fichero
+		File destino = new File("C:\\Devtroce\\Uploads\\");
+		ServletRequestContext src = new ServletRequestContext(request);
+ 
+		if(ServletFileUpload.isMultipartContent(src)){
+			DiskFileItemFactory factory = new DiskFileItemFactory((1024*1024),destino);
+			ServletFileUpload upload = new  ServletFileUpload(factory);
+ 
+			java.util.List lista;    
+                        lista = upload.parseRequest(request);
+                        File file = null;
+			java.util.Iterator it = lista.iterator();
+ 
+			while(it.hasNext()){
+				FileItem item=(FileItem)it.next();
+				if(item.isFormField())
+					out.println(item.getFieldName()+"<br>");
+				else
+				{
+					file=new File(item.getName());
+					item.write(new File(destino,file.getName()));
+					out.println("Fichero subido");
+				} // end if
+			} // end while
+		} // end if
+*/
+
+
+
+        /*
         String url= "F:\\M13 Projecte\\netbeans\\eWAITER\\eWAITERpc\\web\\Recursos\\ImgTemp";
         DiskFileItemFactory df = new DiskFileItemFactory();
         df.setSizeThreshold(15360);//tamaño máximo del archivo
@@ -106,28 +137,28 @@ public class GuardaCambiosCarta extends HttpServlet {
         ServletFileUpload upload = new ServletFileUpload(df);
         
         try{
-            List<FileItem> partes = upload.parseRequest(HttpServletRequest);
+            List<FileItem> partes = upload.parseRequest(request);
             
         }catch(Exception e){
             
         }
         
-        
+         
         //SUBIR AL FTP EXTERNO
         FTPClient ftp = new FTPClient();
-        
+
         try {
             ftp.connect("ewaiter.netau.net");
             ftp.login("a9467752", "ewaiterroot100");
             //FTPFile[] list = ftp.list("public_html/fotos/carta"); -- lo usamos para ver si conecta
-            
+
             String fotillo = "C:\\Users\\Adri\\Pictures\\1.jpg";
             ftp.changeDirectory("/public_html/fotos/carta");
             ftp.upload(new java.io.File(fotillo));
 
             System.out.println("hola");
-            
-           //nos los creemos
+
+            //nos los creemos
         } catch (FTPIllegalReplyException ex) {
             Logger.getLogger(GuardaCambiosCarta.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FTPException ex) {
@@ -139,16 +170,13 @@ public class GuardaCambiosCarta extends HttpServlet {
         } catch (FTPAbortedException ex) {
             Logger.getLogger(GuardaCambiosCarta.class.getName()).log(Level.SEVERE, null, ex);
         }
-            //dejamos de creer
-        
-        
-        
-        
+        //dejamos de creer
+
         try {
             set = con.createStatement();
             if (existe) {
-               response.sendRedirect(response.encodeRedirectURL("./Entrada/opAdministrador/carta/carta.jsp"));
-            }else{
+                response.sendRedirect(response.encodeRedirectURL("./Entrada/opAdministrador/carta/carta.jsp"));
+            } else {
                 response.sendRedirect(response.encodeRedirectURL("./Entrada/opAdministrador/carta/carta.jsp#Error_no_esperado_sry"));
             }
             rs.close();
@@ -158,15 +186,8 @@ public class GuardaCambiosCarta extends HttpServlet {
         }
         // Llamada al servlet que nos visualiza
         // las estadísticas de jugadores
-        
-    }
-    
-public static String getName(HttpServletRequest request){
-    String nombre = (String) request.getParameter("nombre"); ;
-    return nombre;
-}
-    
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+*/
+     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -206,4 +227,3 @@ public static String getName(HttpServletRequest request){
     }// </editor-fold>
 
 }
-
