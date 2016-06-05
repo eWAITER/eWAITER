@@ -91,6 +91,12 @@ public class GuardaCambiosCarta extends HttpServlet {
             System.out.println("No lee de la tabla");
         }
         
+        
+        //SUBIR A LA CARPETA INTERNA
+        //esto lo hacemos para que luego se pueda encontrar la imagen deseada a subir
+        
+        
+        //SUBIR AL FTP EXTERNO
         FTPClient ftp = new FTPClient();
         
         try {
