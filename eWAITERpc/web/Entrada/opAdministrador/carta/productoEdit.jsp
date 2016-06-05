@@ -89,7 +89,7 @@
             </table>
         </div>
 
-        <form action="../../../GuardaCambiosCarta" id="data" method="post">
+        <form action="../../../GuardaCambiosCarta" id="data" method="post" enctype="multipart/form-data">
             <fieldset class="fielseWa">
                 <legend class="legeneWa"><%out.println(nombre);%></legend>
 
